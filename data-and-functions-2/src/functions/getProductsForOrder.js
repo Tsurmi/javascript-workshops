@@ -1,17 +1,15 @@
-export default (data, id) => {
-  if (!data) {
-    throw new Error('getProductsForOrder(): data param is missing')
+const paramMustExist = (name, value) => {
+  if (!value) {
+    throw new Error(`getProductsForOrder(): ${name} param is missing`)
   }
+}
 
-  if (!data.orders) {
-    throw new Error('getProductsForOrder(): data.orders is missing')
-  }
+const getProductsForOrder = (data, orderId) => {
+  paramMustExist('data', data)
+  paramMustExist('data.orders', data.orders)
+  paramMustExist('id', orderId)
 
-  if (!id) {
-    throw new Error('getProductsForOrder(): id is missing')
-  }
-
-  const order = data.orders.find(o => o.id === id)
+  const order = data.orders.find(o => o.id === orderId)
 
   if (!order) {
     return null
@@ -19,3 +17,5 @@ export default (data, id) => {
 
   return order.products.map(productId => data.products.find(p => p.id === productId))
 }
+
+export default getProductsForOrder
