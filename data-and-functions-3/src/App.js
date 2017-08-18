@@ -1,13 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class App extends Component {
-  render () {
-    return (
-      <div>
-        <h1>Create React App Boilerplate Installed</h1>
-      </div>
-    )
-  }
-}
+const App = () =>
+  <div>
+    <h1 style={{textAlign: 'center'}}>Data and Functions Workshop #3</h1>
+  </div>
 
 export default App
