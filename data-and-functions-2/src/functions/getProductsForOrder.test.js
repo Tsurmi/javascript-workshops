@@ -44,7 +44,7 @@ describe('getProductsForOrder', () => {
   it(
     'returns the correct number of elements',
     () =>
-      expect(getProductsForOrder(DATA, 10)).toHaveLength(10)
+      expect(getProductsForOrder(DATA, 10)).toHaveLength(3)
   )
 
   it(
