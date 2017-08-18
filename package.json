@@ -16,5 +16,9 @@
   },
   "dependencies": {
     "eslint": "^4.4.1"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   }
 }
