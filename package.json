@@ -16,6 +16,8 @@
     "eslint-plugin-standard": "^3.0.1"
   },
   "scripts": {
+    "update:master": "git checkout master && git pull upstream",
+    "update:answers": "git checkout answers && git pull upstream && git checkout master",
     "install": "./install.sh",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
