@@ -4,8 +4,5 @@ module.exports = {
     jest: true,
     node: true
   },
-  extends: ['standard', 'standard-react'],
-  globals: {
-    describe: true
-  }
+  extends: ['standard', 'standard-react']
 }

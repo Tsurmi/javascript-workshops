@@ -16,6 +16,7 @@
     "eslint-plugin-standard": "^3.0.1"
   },
   "scripts": {
+    "install": "./install.sh",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   }
