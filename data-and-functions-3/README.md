@@ -6,8 +6,8 @@ to the second exercise. We are now going to mutate the data.
 
 Please write the following functions:
 
-1. addProduct = (data, product) => // adds a new product. Returns the new product
-1. addOrder = (data, order) => // adds a new order. Returns the new order
+1. `addProduct = (data, product) => // adds a new product. Returns the new product`
+1. `addOrder = (data, order) => // adds a new order. Returns the new order`
 
 ### Hints ###
 

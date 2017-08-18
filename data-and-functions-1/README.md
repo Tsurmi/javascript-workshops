@@ -5,11 +5,11 @@ functions and get all of the tests to pass.
 
 Please write the following functions:
 
-1. getUserById = (data, userId) => // a user object
-1. getProductById = (data, productId) => // a product object
-1. getActiveUsers = (data) => // array of active users
-1. getMostExpensiveProduct = (data) => // the most expensive product object
-1. getOrderInfo = (data, orderId) => // an order info object
+1. `getUserById = (data, userId) => // returns a user object`
+1. `getProductById = (data, productId) => // returns a product object`
+1. `getActiveUsers = (data) => // returns an array of active users`
+1. `getMostExpensiveProduct = (data) => // returns the most expensive product object`
+1. `getOrderInfo = (data, orderId) => // returns an order info object`
 
 ### Hints ###
 

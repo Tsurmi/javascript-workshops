@@ -7,8 +7,8 @@ ids.
 
 Please write the following functions:
 
-1. getProductsForOrder = (data, orderId) => // an array of product objects
-1. getTotalPriceForOrder = (data, orderId) => // an order's total price
+1. `getProductsForOrder = (data, orderId) => // returns an array of product objects`
+1. `getTotalPriceForOrder = (data, orderId) => // returns an order's total price`
 
 ### Hints ###
 
