@@ -3,7 +3,7 @@ export default (data, newProduct) => {
     throw new Error('Invalid parameters')
   }
 
-  if (newProduct.id || !newProduct.name || !newProduct.price) {
+  if (typeof newProduct !== 'object' || newProduct.id || !newProduct.name || !newProduct.price) {
     throw new Error('Bad product param', newProduct)
   }
 
