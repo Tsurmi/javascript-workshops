@@ -18,6 +18,7 @@
   },
   "scripts": {
     "clean": "rimraf ./data-and-functions-1/node_modules && rimraf ./data-and-functions-2/node_modules && rimraf ./data-and-functions-3/node_modules",
+    "clean:root": "rimraf ./node_modules",
     "update": "git checkout master && git pull upstream master",
     "update:answers": "git checkout answers && git pull upstream answers && git checkout master",
     "postinstall": "./install.sh",
