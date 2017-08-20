@@ -90,7 +90,7 @@ describe('addOrder', () => {
   )
 
   it(
-    'returns an object with the correct properties (id, name price)',
+    'returns an object with the correct properties (id, userId, products)',
     () => {
       const data = cloneDeep(DATA)
       const sampleOrder = getSampleOrder()
