@@ -3,10 +3,10 @@ import {cloneDeep, isPlainObject} from 'lodash'
 import DATA from '../DATA'
 import addProduct from './addProduct'
 
-const sampleProduct = {
+const getSampleProduct = () => ({
   name: 'Sample Product',
   price: 100
-}
+})
 
 describe('addProduct', () => {
   it(
@@ -18,13 +18,13 @@ describe('addProduct', () => {
   it(
     'throws if data is missing',
     () =>
-      expect(() => addProduct(undefined, sampleProduct)).toThrow(Error)
+      expect(() => addProduct(undefined, getSampleProduct())).toThrow(Error)
   )
 
   it(
     'throws if data.products is missing',
     () =>
-      expect(() => addProduct({}, sampleProduct)).toThrow(Error)
+      expect(() => addProduct({}, getSampleProduct())).toThrow(Error)
   )
 
   it(
@@ -57,7 +57,7 @@ describe('addProduct', () => {
     'returns an object',
     () => {
       const data = cloneDeep(DATA)
-      const returnValue = addProduct(data, sampleProduct)
+      const returnValue = addProduct(data, getSampleProduct())
       expect(isPlainObject(returnValue)).toBe(true)
     }
   )
@@ -66,11 +66,11 @@ describe('addProduct', () => {
     'returns an object with the correct properties (id, name price)',
     () => {
       const data = cloneDeep(DATA)
-      const returnValue = addProduct(data, sampleProduct)
+      const returnValue = addProduct(data, getSampleProduct())
       expect(returnValue).toEqual(expect.objectContaining({
         id: expect.any(Number),
-        name: sampleProduct.name,
-        price: sampleProduct.price
+        name: getSampleProduct().name,
+        price: getSampleProduct().price
       }))
     }
   )
@@ -79,7 +79,7 @@ describe('addProduct', () => {
     'mutates the data.products array correctly',
     () => {
       const data = cloneDeep(DATA)
-      const returnValue = addProduct(data, sampleProduct)
+      const returnValue = addProduct(data, getSampleProduct())
       expect(data.products).toContainEqual(returnValue)
     }
   )
