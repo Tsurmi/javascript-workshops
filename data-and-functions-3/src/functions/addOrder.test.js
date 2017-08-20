@@ -3,10 +3,10 @@ import {cloneDeep, isPlainObject} from 'lodash'
 import DATA from '../DATA'
 import addOrder from './addOrder'
 
-const sampleOrder = {
+const getSampleOrder = () => ({
   userId: 3,
   products: [1, 2, 3]
-}
+})
 
 describe('addOrder', () => {
   it(
@@ -18,13 +18,13 @@ describe('addOrder', () => {
   it(
     'throws if data is missing',
     () =>
-      expect(() => addOrder(undefined, sampleOrder)).toThrow(Error)
+      expect(() => addOrder(undefined, getSampleOrder())).toThrow(Error)
   )
 
   it(
     'throws if data.orders is missing',
     () =>
-      expect(() => addOrder({}, sampleOrder)).toThrow(Error)
+      expect(() => addOrder({}, getSampleOrder())).toThrow(Error)
   )
 
   it(
@@ -49,7 +49,7 @@ describe('addOrder', () => {
     'throws if the new order has an id property',
     () => {
       const data = cloneDeep(DATA)
-      const newOrder = cloneDeep(sampleOrder)
+      const newOrder = cloneDeep(getSampleOrder())
       newOrder.id = 100
       expect(() => addOrder(data, newOrder)).toThrow(Error)
     }
@@ -60,7 +60,7 @@ describe('addOrder', () => {
     () => {
       const data = cloneDeep(DATA)
       const newOrder = {
-        ...sampleOrder,
+        ...getSampleOrder(),
         userId: 10000
       }
       expect(() => addOrder(data, newOrder)).toThrow(Error)
@@ -71,9 +71,10 @@ describe('addOrder', () => {
     'throws if the products array contains bad productIds',
     () => {
       const data = cloneDeep(DATA)
+      const sampleOrder = getSampleOrder()
       const newOrder = {
         ...sampleOrder,
-        products: [...sampleOrder, 100000]
+        products: [...sampleOrder.products, 100000]
       }
       expect(() => addOrder(data, newOrder)).toThrow(Error)
     }
@@ -83,7 +84,7 @@ describe('addOrder', () => {
     'returns an object',
     () => {
       const data = cloneDeep(DATA)
-      const returnValue = addOrder(data, sampleOrder)
+      const returnValue = addOrder(data, getSampleOrder())
       expect(isPlainObject(returnValue)).toBe(true)
     }
   )
@@ -92,6 +93,7 @@ describe('addOrder', () => {
     'returns an object with the correct properties (id, name price)',
     () => {
       const data = cloneDeep(DATA)
+      const sampleOrder = getSampleOrder()
       const returnValue = addOrder(data, sampleOrder)
       expect(returnValue).toEqual(expect.objectContaining({
         id: expect.any(Number),
@@ -104,7 +106,7 @@ describe('addOrder', () => {
     'mutates the data.orders array correctly',
     () => {
       const data = cloneDeep(DATA)
-      const returnValue = addOrder(data, sampleOrder)
+      const returnValue = addOrder(data, getSampleOrder())
       expect(data.orders).toContainEqual(returnValue)
     }
   )
