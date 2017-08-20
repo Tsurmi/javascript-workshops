@@ -57,8 +57,7 @@ describe('addProduct', () => {
     'returns an object',
     () => {
       const data = cloneDeep(DATA)
-      const newProduct = {name: 'New Product', price: 100}
-      const returnValue = addProduct(data, newProduct)
+      const returnValue = addProduct(data, sampleProduct)
       expect(isPlainObject(returnValue)).toBe(true)
     }
   )
@@ -67,12 +66,11 @@ describe('addProduct', () => {
     'returns an object with the correct properties (id, name price)',
     () => {
       const data = cloneDeep(DATA)
-      const newProduct = {name: 'New Product', price: 100}
-      const returnValue = addProduct(data, newProduct)
+      const returnValue = addProduct(data, sampleProduct)
       expect(returnValue).toEqual(expect.objectContaining({
         id: expect.any(Number),
-        name: 'New Product',
-        price: 100
+        name: sampleProduct.name,
+        price: sampleProduct.price
       }))
     }
   )
@@ -81,8 +79,7 @@ describe('addProduct', () => {
     'mutates the data.products array correctly',
     () => {
       const data = cloneDeep(DATA)
-      const newProduct = {name: 'New Product', price: 100}
-      const returnValue = addProduct(data, newProduct)
+      const returnValue = addProduct(data, sampleProduct)
       expect(data.products).toContainEqual(returnValue)
     }
   )
