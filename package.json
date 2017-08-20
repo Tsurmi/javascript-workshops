@@ -13,12 +13,14 @@
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.2.1",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint-plugin-standard": "^3.0.1",
+    "rimraf": "^2.6.1"
   },
   "scripts": {
-    "update:master": "git checkout master && git pull upstream master",
+    "clean": "rimraf ./data-and-functions-1/node_modules && rimraf ./data-and-functions-2/node_modules && rimraf ./data-and-functions-3/node_modules",
+    "update": "git checkout master && git pull upstream master",
     "update:answers": "git checkout answers && git pull upstream answers && git checkout master",
-    "install": "./install.sh",
+    "postinstall": "./install.sh",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   }
