@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if ! git ls-remote upstream; then
+if ! git config remote.upstream.url > /dev/null; then
   git remote add upstream https://github.com/AmericaCampaign/javascript-workshops.git
 fi
 
