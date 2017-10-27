@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {HomeContainer, AboutContainer, ShopContainer} from './containers';
+import {HomeContainer, AboutContainer, ShopContainer, SubmitProductContainer} from './containers';
 import {Route, Switch} from 'react-router-dom';
 import {NavBar, Cart, Profile} from "./components";
 import ProductList from './components/products/ProductList';
@@ -18,10 +18,19 @@ class Layout extends Component {
           <Route exact path="/" component={ HomeContainer } />
           <Route path="/my-about-page" component={ AboutContainer } />
           <Route path="/my-shop-page" component={ ShopContainer } />
-          <Route path="/product-page" render={() => <ProductList products={this.props.products} addToCart={this.props.addToCart}/>} />
-          <Route path='/cart' render={() => <Cart cart={this.props.cart} totalPrice={this.props.totalPrice} />} />
-          <Route path='/profile' render={() => <Profile user={this.props.user} /> } />
-        </Switch>
+          <Route path="/product-page" render={() =>
+            <ProductList products={this.props.products} addToCart={this.props.addToCart}/>}
+          />
+          <Route path='/cart' render={() =>
+            <Cart cart={this.props.cart} totalPrice={this.props.totalPrice} />}
+          />
+          <Route path='/profile' render={() =>
+            <Profile user={this.props.user} /> }
+          />
+          <Route path="/submitProduct" render={() =>
+            <SubmitProductContainer onChange={this.props.onChange} submitProduct={this.props.submitProduct}/> }
+          />
+         </Switch>
         </div>
       </div>
     );

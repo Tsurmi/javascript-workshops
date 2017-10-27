@@ -22,20 +22,61 @@ const getProductById = (id) => {
 }
 
 const getUserNameAndProduct = () => {
-  Data.orders.forEach((o) =>{
-    console.log(o.id);
+  Data.orders.forEach((o) => {
+    // console.log(o.id);
 
     const user = getUserById(o.userId)
-    console.log(user.name)
+    // console.log(user.name)
 
     const product = getProductById(o.productId)
-    console.log(product.name)
+    // console.log(product.name)
   })
 }
 
+const activeUsers = (users) => {
+  let active = []
+  for (let i = 0; i < Data.users.length; i++){
+    if(Data.users[i].accountActive === true) {
+       active.push(Data.users[i])
+    }
+  }
+  return active
+}
+
+const getMostExpensiveProduct = (price) => {
+  let expensive = ""
+  for (let i = 0; i < Data.products.length; i++){
+    if(Data.products[i].price === price) {
+      expensive.push(Data.products[i])
+    }
+  }
+  return expensive
+}
+
+const orderInfoArr = []
+
+for (let i =0; i < Data.orders.length; i++){
+  const currentOrder = data.orders[i]
+
+  const userName = getUserById(data, currentOrder.userId).name
+  const price = getProductById(data, currentOrder.productId).price
+
+  const orderInfo = {
+    orderId: orderId,
+    userName: userName,
+    price: price
+  }
+  orderInfoArr.push(orderInfo)
+
+}
+return orderInfoArr
+
+
 class App extends Component {
   render() {
-    getUserNameAndProduct()
+    console.log(activeUsers())
+    console.log(orderInfoArr)
+    // console.log(getMostExpensiveProduct())
     return (
       <div>
         Hello World

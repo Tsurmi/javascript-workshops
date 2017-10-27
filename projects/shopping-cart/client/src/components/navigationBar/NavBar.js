@@ -10,6 +10,7 @@ const NavBar = (props) => {
           <li> <Link className="Link" to="/">Home</Link> </li>
           <li> <Link className="Link" to="/my-about-page">About</Link> </li>
           <li> <Link className="Link" to="/product-page">Products</Link> </li>
+          <li> <Link className="Link" to="/SubmitProduct">Submit</Link> </li>
           <li> <Link className="Link" to="/cart"> Total Items: {props.cartCount} </Link> </li>
           <li> <p> $ {props.totalPrice} </p> </li>
         </ul>

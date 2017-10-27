@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from "../../Layout";
 import faker from 'faker';
+import $ from 'jquery';
 
 class DataProvider extends React.Component {
 
@@ -8,29 +9,22 @@ class DataProvider extends React.Component {
     products: [],
     cart: [],
     user: null,
-    isDataLoaded: false
-
+    isDataLoaded: false,
+    product: {}
   }
 
   componentDidMount = () => {
-    this.fetchProductsFromServer()
-  }
-
-  fetchProductsFromServer = () => {
-    const temporaryArray = [];
-    for(var i=0; i<21; i++){
-      temporaryArray.push({
-        productName: faker.commerce.productName(),
-        price: faker.commerce.price(),
-        department: faker.commerce.department(),
-        img: faker.random.image()
+    let tempProducts = []
+      $.ajax({
+        url:'/api/products',
+        method: 'GET',
+      }).done((response) => {
+        this.setState({
+          products: response.data,
+          user: this.createUser(),
+          isDataLoaded: true
+         })
       })
-    }
-    this.setState({
-      products: temporaryArray,
-      user: this.createUser(),
-      isDataLoaded: true
-    })
   }
 
   addToCart = (product) => {
@@ -49,6 +43,25 @@ class DataProvider extends React.Component {
     }
     return user;
   }
+  onChange = (type, value) => {
+    const newProduct = this.state.product
+    newProduct[type] = value
+    this.setState({ product: newProduct })
+    console.log(this.state.product)
+  }
+
+  submitProduct = (event) => {
+    event.preventDefault()
+    $.ajax({
+      url: "/api/products",
+      method: "POST",
+      data: this.state.product
+    }).done((response) => {
+      const newProducts = this.state.products
+      newProducts.push(response.data)
+      this.setState({ product: newProducts })
+    })
+  }
 
   render(){
     let totalPrice = 0;
@@ -66,6 +79,8 @@ class DataProvider extends React.Component {
           cart={this.state.cart}
           totalPrice={totalPrice.toFixed(2)}
           user={this.state.user}
+          onChange={this.onChange}
+          submitProduct={this.submitProduct}
         />
         : <h1> Data Loading </h1>
         }

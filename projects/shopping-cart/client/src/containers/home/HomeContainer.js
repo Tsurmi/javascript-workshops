@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Home} from '../../components';
 
-class HomeContainer extends React.Component {
+class HomeContainer extends Component {
   state = {
     title: undefined
   }
@@ -12,7 +12,7 @@ class HomeContainer extends React.Component {
 
   getTitle = () => {
     setTimeout(() => {
-      this.setState({ title: "Welcome"});
+      this.setState({ title: "Shop 'til You Drop"});
     }, 0)
   }
 

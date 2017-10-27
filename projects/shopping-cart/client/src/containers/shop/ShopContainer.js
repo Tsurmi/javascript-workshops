@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Shop} from '../../components';
 import faker from 'faker';
 
-class ShopContainer extends React.Component {
+class ShopContainer extends Component {
   state = {
     title: '',
     price: '',
